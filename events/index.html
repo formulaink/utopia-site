@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta charset="utf-8">
+<meta charset="utf-8"><meta name="color-scheme" content="dark">
 <title>Utopia Launch Event</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -231,6 +231,9 @@ footer .mark .wm{font-size:30px}
 .nav .mark img{border-radius:50%;box-shadow:0 0 0 1.5px rgba(237,185,171,.85),0 0 0 4px rgba(217,154,139,.18)}
 /* membership note: clean, legible body font instead of thin italic */
 .callout{font-family:var(--body);font-style:normal;font-weight:500;font-size:clamp(20px,2.1vw,24px);line-height:1.5;color:var(--ink)}
+/* Chrome-safe: declare the page dark so Chrome's auto dark mode leaves it alone, and use a solid gold wordmark that can't render as a box */
+:root{color-scheme:dark}
+.wm{background:none!important;-webkit-background-clip:border-box!important;background-clip:border-box!important;color:#F2BE52!important;-webkit-text-fill-color:#F2BE52;filter:none!important;text-shadow:0 0 10px rgba(242,170,60,.45),0 1px 2px rgba(0,0,0,.7)}
 </style>
 <nav class="nav"><div class="wrap"><a class="mark" href="/"><img src="/utopia-logo.png" alt="" width="48" height="48"><span class="wm">UTOPIA</span></a><a class="tab" href="/">Overview</a><a class="tab on" href="/events">Events</a></div></nav>
 

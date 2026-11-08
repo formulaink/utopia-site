@@ -1,4 +1,4 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html><head><meta charset=utf8><meta name="color-scheme" content="dark"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#0b0a08;color:#f4eee2}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <meta charset="utf-8">
 <title>Utopia Penthouse</title>
 <meta name="claude:viewport-fit-sides" content="cover">
@@ -203,6 +203,9 @@ footer .mark .wm{font-size:30px}
 .nav .mark img{border-radius:50%;box-shadow:0 0 0 1.5px rgba(237,185,171,.85),0 0 0 4px rgba(217,154,139,.18)}
 /* membership note: clean, legible body font instead of thin italic */
 .callout{font-family:var(--body);font-style:normal;font-weight:500;font-size:clamp(20px,2.1vw,24px);line-height:1.5;color:var(--ink)}
+/* Chrome-safe: declare the page dark so Chrome's auto dark mode leaves it alone, and use a solid gold wordmark that can't render as a box */
+:root{color-scheme:dark}
+.wm{background:none!important;-webkit-background-clip:border-box!important;background-clip:border-box!important;color:#F2BE52!important;-webkit-text-fill-color:#F2BE52;filter:none!important;text-shadow:0 0 10px rgba(242,170,60,.45),0 1px 2px rgba(0,0,0,.7)}
 </style>
 
 <nav class="nav"><div class="wrap"><a class="mark" href="/"><img src="/utopia-logo.png" alt="" width="48" height="48"><span class="wm">UTOPIA</span></a><a class="tab on" href="/">Overview</a></div></nav>
