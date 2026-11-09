@@ -174,8 +174,18 @@
       };
       if (form.guests) data.guests = form.guests.value;
       btn.disabled = true; btn.textContent = 'Sending…';
-      fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) })
-        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok || String(j.success) === 'false') throw new Error(j.message || 'failed'); }); })
+      // 1st choice: Netlify Forms (same site, nothing for browsers to block).
+      var nf = new URLSearchParams();
+      nf.append('form-name', 'invitation');
+      nf.append('subject', data._subject);
+      Object.keys(data).forEach(function (k) { if (k.charAt(0) !== '_') nf.append(k, data[k] || ''); });
+      fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: nf.toString() })
+        .then(function (r) { if (!r.ok) throw new Error('netlify ' + r.status); })
+        // 2nd choice: FormSubmit straight to the inbox.
+        .catch(function () {
+          return fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) })
+            .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok || String(j.success) === 'false') throw new Error(j.message || 'failed'); }); });
+        })
         .then(function () { done(name); })
         .catch(function (e) {
           btn.disabled = false; btn.textContent = 'Send request';
