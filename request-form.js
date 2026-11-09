@@ -71,7 +71,7 @@
       '</select></div>' +
       (isEvent ? '<div class="rq-f"><label for="rq-guests">Number of guests</label><input id="rq-guests" name="guests" type="number" min="1" max="10" value="1"></div>' : '<div></div>') +
       '</div>' +
-      '<div class="rq-f"><label for="rq-msg">Tell us a little about yourself <span class="rq-req">*</span></label><textarea id="rq-msg" name="message" required></textarea></div>' +
+      '<div class="rq-f"><label for="rq-msg">Message <span class="rq-req">*</span></label><textarea id="rq-msg" name="message" placeholder="How can we help? Tell us what you’re interested in, questions, or anything you’d like us to know." required></textarea></div>' +
       '<div class="rq-hp" aria-hidden="true"><input name="_honey" tabindex="-1" autocomplete="off"></div>' +
       '<button type="submit">Send request</button>' +
       '<p class="rq-err" role="alert"></p>' +
