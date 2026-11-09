@@ -7,9 +7,10 @@
   var ENDPOINT = 'https://formsubmit.co/ajax/' + TO;
 
   var css = '' +
-    '.rq-back{position:fixed;inset:0;z-index:1000;background:rgba(8,7,6,.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;transition:opacity .2s}' +
+    '.rq-back{position:fixed;inset:0;z-index:1000;background:rgba(8,7,6,.86);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:16px;opacity:0;transition:opacity .2s}' +
+    '@media (hover:hover) and (pointer:fine){.rq-back{backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}}' +
     '.rq-back.open{opacity:1}' +
-    '.rq{position:relative;width:100%;max-width:520px;max-height:calc(100vh - 32px);overflow:auto;background:#141210;border:1px solid rgba(217,154,139,.35);border-radius:4px;padding:36px 32px 32px;color:#f4eee2;font-family:"Libre Franklin","Helvetica Neue",Arial,sans-serif;box-shadow:0 30px 80px rgba(0,0,0,.6)}' +
+    '.rq{position:relative;width:100%;max-width:520px;margin:4vh auto 40vh;background:#141210;border:1px solid rgba(217,154,139,.35);border-radius:4px;padding:36px 32px 32px;color:#f4eee2;font-family:"Libre Franklin","Helvetica Neue",Arial,sans-serif;box-shadow:0 30px 80px rgba(0,0,0,.6)}' +
     '.rq h2{font-family:"Anton","Impact","Arial Narrow",sans-serif;font-weight:400;text-transform:uppercase;font-size:34px;line-height:1.05;margin:0 0 8px;letter-spacing:.01em}' +
     '.rq p.rq-lead{margin:0 0 22px;font-size:16px;line-height:1.5;color:#ddd4c5}' +
     '.rq label{display:block;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#EDB8AB;margin:0 0 6px}' +
@@ -193,22 +194,43 @@
     }
   }
 
+  var touch = window.matchMedia && window.matchMedia('(hover: none), (pointer: coarse)').matches;
+  var savedY = 0;
+  // Freeze the page behind the form without breaking scrolling inside it (works on iOS Safari).
+  function lockScroll() {
+    savedY = window.scrollY || window.pageYOffset || 0;
+    var b = document.body.style;
+    b.position = 'fixed'; b.top = -savedY + 'px'; b.left = '0'; b.right = '0'; b.width = '100%';
+  }
+  function unlockScroll() {
+    var b = document.body.style;
+    b.position = ''; b.top = ''; b.left = ''; b.right = ''; b.width = '';
+    window.scrollTo(0, savedY);
+  }
+
   function onKey(e) { if (e.key === 'Escape') close(); }
 
   function open(subject, isEvent) {
     lastFocus = document.activeElement;
     build(subject, isEvent);
-    document.documentElement.style.overflow = 'hidden';
+    lockScroll();
     document.addEventListener('keydown', onKey);
     requestAnimationFrame(function () { back.classList.add('open'); });
-    setTimeout(function () { var f = back.querySelector('#rq-name'); if (f) f.focus(); }, 60);
+    // On phones, don't pop the keyboard straight away; let people tap the field they want.
+    if (!touch) setTimeout(function () { var f = back.querySelector('#rq-name'); if (f) f.focus(); }, 60);
+    // Keep the field being typed in visible above the on-screen keyboard.
+    back.addEventListener('focusin', function (e) {
+      var t = e.target;
+      if (!touch || !t.matches || !t.matches('input,textarea,select')) return;
+      setTimeout(function () { t.scrollIntoView({ block: 'center', behavior: 'smooth' }); }, 300);
+    });
   }
 
   function close() {
     if (!back) return;
     var b = back; back = null;
     b.classList.remove('open');
-    document.documentElement.style.overflow = '';
+    unlockScroll();
     document.removeEventListener('keydown', onKey);
     setTimeout(function () { b.remove(); }, 200);
     if (lastFocus && lastFocus.focus) lastFocus.focus();
