@@ -177,9 +177,17 @@
       fetch(ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data) })
         .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok || String(j.success) === 'false') throw new Error(j.message || 'failed'); }); })
         .then(function () { done(name); })
-        .catch(function () {
+        .catch(function (e) {
           btn.disabled = false; btn.textContent = 'Send request';
-          err.innerHTML = 'Sorry, that didn’t go through. Please try again, or email us at <a href="mailto:' + TO + '" style="color:#EDB8AB">' + TO + '</a>.';
+          if (window.console) console.warn('Utopia form: send failed:', e && e.message);
+          // Never lose a request: offer the same details as a ready-to-send email.
+          var lines = [];
+          Object.keys(data).forEach(function (k) {
+            if (k.charAt(0) === '_' || !data[k]) return;
+            lines.push(k.replace(/_/g, ' ').replace(/^./, function (c) { return c.toUpperCase(); }) + ': ' + data[k]);
+          });
+          var mail = 'mailto:' + TO + '?subject=' + encodeURIComponent(data._subject) + '&body=' + encodeURIComponent(lines.join('\n'));
+          err.innerHTML = 'Sorry, that didn’t go through. <a href="' + mail + '" style="color:#EDB8AB;font-weight:600">Tap here to send it by email instead</a>. Your details are already filled in.';
           err.style.display = 'block';
         });
     });
