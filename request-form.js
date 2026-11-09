@@ -10,27 +10,27 @@
     '.rq-back{position:fixed;inset:0;z-index:1000;background:rgba(8,7,6,.86);overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:16px;opacity:0;transition:opacity .2s}' +
     '@media (hover:hover) and (pointer:fine){.rq-back{backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}}' +
     '.rq-back.open{opacity:1}' +
-    '.rq{position:relative;width:100%;max-width:520px;margin:4vh auto 40vh;background:#141210;border:1px solid rgba(217,154,139,.35);border-radius:4px;padding:36px 32px 32px;color:#f4eee2;font-family:"Libre Franklin","Helvetica Neue",Arial,sans-serif;box-shadow:0 30px 80px rgba(0,0,0,.6)}' +
+    '.rq{position:relative;width:100%;max-width:520px;margin:4vh auto 40vh;background:#141210;border:1px solid rgba(201,164,92,.35);border-radius:4px;padding:36px 32px 32px;color:#f4eee2;font-family:"Libre Franklin","Helvetica Neue",Arial,sans-serif;box-shadow:0 30px 80px rgba(0,0,0,.6)}' +
     '.rq h2{font-family:"Anton","Impact","Arial Narrow",sans-serif;font-weight:400;text-transform:uppercase;font-size:34px;line-height:1.05;margin:0 0 8px;letter-spacing:.01em}' +
     '.rq p.rq-lead{margin:0 0 22px;font-size:16px;line-height:1.5;color:#ddd4c5}' +
-    '.rq label{display:block;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#EDB8AB;margin:0 0 6px}' +
+    '.rq label{display:block;font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#E2C98E;margin:0 0 6px}' +
     '.rq .rq-f{margin-bottom:16px}' +
     '.rq input,.rq textarea,.rq select{width:100%;box-sizing:border-box;background:#0b0a08;border:1px solid #3a332b;border-radius:2px;color:#f4eee2;font:16px/1.4 "Libre Franklin","Helvetica Neue",Arial,sans-serif;padding:13px 14px;outline:none;transition:border-color .15s}' +
-    '.rq input:focus,.rq textarea:focus,.rq select:focus{border-color:#D99A8B}' +
-    '.rq select{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,#D99A8B 50%),linear-gradient(135deg,#D99A8B 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%;background-size:6px 6px;background-repeat:no-repeat;padding-right:36px}' +
-    '.rq .rq-req{color:#EDB8AB}' +
+    '.rq input:focus,.rq textarea:focus,.rq select:focus{border-color:#C9A45C}' +
+    '.rq select{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,#C9A45C 50%),linear-gradient(135deg,#C9A45C 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%;background-size:6px 6px;background-repeat:no-repeat;padding-right:36px}' +
+    '.rq .rq-req{color:#E2C98E}' +
     '.rq .rq-note{margin:-12px 0 18px;font-size:14px;color:#9d9383}' +
     '.rq .rq-opt{color:#9d9383;font-weight:400;letter-spacing:.04em;text-transform:none}' +
     '.rq textarea{min-height:96px;resize:vertical}' +
     '.rq .rq-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}' +
-    '.rq button[type=submit]{width:100%;margin-top:6px;background:#D99A8B;color:#14110b;border:0;border-radius:2px;font:700 16px "Libre Franklin","Helvetica Neue",Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;padding:18px;cursor:pointer;transition:background .2s}' +
-    '.rq button[type=submit]:hover{background:#EDB8AB}' +
+    '.rq button[type=submit]{width:100%;margin-top:6px;background:linear-gradient(180deg,#F5E7C2 0%,#EAD5A3 32%,#C9A45C 66%,#E0C68F 100%);color:#14110b;border:0;border-radius:2px;font:700 16px "Libre Franklin","Helvetica Neue",Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;padding:18px;cursor:pointer;transition:background .2s}' +
+    '.rq button[type=submit]:hover{background:linear-gradient(180deg,#FBF0D2 0%,#F0DDB0 32%,#D3AE67 66%,#E8D09C 100%)}' +
     '.rq button[type=submit][disabled]{opacity:.6;cursor:wait}' +
     '.rq .rq-x{position:absolute;top:10px;right:12px;background:none;border:0;color:#cfc6b6;font-size:30px;line-height:1;cursor:pointer;padding:6px 10px}' +
-    '.rq .rq-x:hover{color:#EDB8AB}' +
+    '.rq .rq-x:hover{color:#E2C98E}' +
     '.rq .rq-hint{display:block;min-height:0;font-size:14px;line-height:1.4;margin-top:6px;color:#ffb4a6}' +
     '.rq .rq-hint:empty{display:none}' +
-    '.rq .rq-hint button{background:none;border:0;padding:0;color:#EDB8AB;font:inherit;text-decoration:underline;cursor:pointer}' +
+    '.rq .rq-hint button{background:none;border:0;padding:0;color:#E2C98E;font:inherit;text-decoration:underline;cursor:pointer}' +
     '.rq input.rq-bad{border-color:#e07a6a}' +
     '.rq .rq-err{color:#ffb4a6;font-size:15px;margin:10px 0 0;display:none}' +
     '.rq .rq-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}' +
@@ -197,7 +197,7 @@
             lines.push(k.replace(/_/g, ' ').replace(/^./, function (c) { return c.toUpperCase(); }) + ': ' + data[k]);
           });
           var mail = 'mailto:' + TO + '?subject=' + encodeURIComponent(data._subject) + '&body=' + encodeURIComponent(lines.join('\n'));
-          err.innerHTML = 'Sorry, that didn’t go through. <a href="' + mail + '" style="color:#EDB8AB;font-weight:600">Tap here to send it by email instead</a>. Your details are already filled in.';
+          err.innerHTML = 'Sorry, that didn’t go through. <a href="' + mail + '" style="color:#E2C98E;font-weight:600">Tap here to send it by email instead</a>. Your details are already filled in.';
           err.style.display = 'block';
         });
     });
