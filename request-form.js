@@ -56,7 +56,10 @@
       '<div class="rq-f"><label for="rq-email">Email <span class="rq-req">*</span></label><input id="rq-email" name="email" type="email" autocomplete="email" required></div>' +
       '<div class="rq-f"><label for="rq-phone">Phone <span class="rq-req">*</span></label><input id="rq-phone" name="phone" type="tel" autocomplete="tel" required></div>' +
       '</div>' +
-      '<div class="rq-f"><label for="rq-social">Instagram or LinkedIn</label><input id="rq-social" name="social" placeholder="@handle or profile link"></div>' +
+      '<div class="rq-row">' +
+      '<div class="rq-f"><label for="rq-ig">Instagram</label><input id="rq-ig" name="instagram" placeholder="@handle"></div>' +
+      '<div class="rq-f"><label for="rq-li">LinkedIn</label><input id="rq-li" name="linkedin" placeholder="Profile link"></div>' +
+      '</div>' +
       '<div class="rq-f"><label for="rq-ref">Referred by a member?</label><input id="rq-ref" name="referred_by" placeholder="Their name"></div>' +
       '<div class="rq-row">' +
       '<div class="rq-f"><label for="rq-int">Interested in <span class="rq-req">*</span></label><select id="rq-int" name="interest">' +
@@ -98,7 +101,8 @@
         email: email,
         phone: phone,
         interested_in: form.interest.value,
-        instagram_or_linkedin: form.social.value.trim(),
+        instagram: form.instagram.value.trim(),
+        linkedin: form.linkedin.value.trim(),
         referred_by: form.referred_by.value.trim(),
         message: form.message.value.trim(),
         page: location.href
